@@ -1,0 +1,29 @@
+#main_title {
+    text-align: start;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.box1 h2 {
+    float: left;
+}
+
+.box1 button {
+    float: right;
+}
+.box2 button {
+    float: right;
+}
+
+.addSucess{
+    text-align: center;
+    color: green;
+}
+
+h6{
+    text-align: center;
+    color: red;
+}
