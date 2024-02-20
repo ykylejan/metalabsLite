@@ -1,6 +1,9 @@
 <?php
 include("header.php");
 include("metalabsdb.php");
+
+//ignore
+
 ?>
 
 <br><br>
@@ -33,16 +36,16 @@ include("metalabsdb.php");
         } else {
             while ($row = mysqli_fetch_assoc($result)) {
         ?>
-                <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['first_name'] . " " .  $row['last_name']; ?> </td>
-                    <td><?php echo $row['course']; ?> </td>
-                    <td><?php echo $row['birthdate']; ?> </td>
-                    <td><?php echo "+63" . $row['contact_number']; ?> </td>
-                    <td><a href="courseEnroll_page.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Course</a> </td>
-                    <td><a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a> </td>
-                    <td><a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a> </td>
-                </tr>
+        <tr>
+            <td><?php echo $row['id']; ?></td>
+            <td><?php echo $row['first_name'] . " " .  $row['last_name']; ?> </td>
+            <td><?php echo $row['course']; ?> </td>
+            <td><?php echo $row['birthdate']; ?> </td>
+            <td><?php echo "+63" . $row['contact_number']; ?> </td>
+            <td><a href="courseEnroll_page.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Course</a> </td>
+            <td><a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a> </td>
+            <td><a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a> </td>
+        </tr>
         <?php
             }
         }
@@ -69,7 +72,8 @@ if (isset($_GET['delete_msg'])) {
 
 
 <form action="insert_data.php" method="post">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
