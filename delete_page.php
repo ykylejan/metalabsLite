@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($connection, $query);
 
 }
-
+ 
 if (!$result) {
     // die("Query Failed".mysqli_error($connection));
     die("Query Failed");
