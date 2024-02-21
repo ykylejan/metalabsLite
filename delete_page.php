@@ -15,5 +15,3 @@ if (!$result) {
 } else {
     header('Location: index.php?delete_msg=You have deleted a record');
 }
-
-//testing-pagination

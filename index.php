@@ -20,9 +20,8 @@ include("metalabsdb.php");
             <th>Course</th>
             <th>Birthdate</th>
             <th>Contact No.</th>
-            <th>Enroll Course</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Configuration</th>
+
         </tr>
     </thead>
     <tbody>
@@ -30,7 +29,7 @@ include("metalabsdb.php");
         <?php
         $query = "SELECT * FROM `student_enrollment`";
         $result = mysqli_query($connection, $query);
-
+        
         if (!$result) {
             die("query failed" . mysqli_error());
         } else {
@@ -42,9 +41,12 @@ include("metalabsdb.php");
             <td><?php echo $row['course']; ?> </td>
             <td><?php echo $row['birthdate']; ?> </td>
             <td><?php echo "+63" . $row['contact_number']; ?> </td>
-            <td><a href="courseEnroll_page.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Course</a> </td>
-            <td><a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a> </td>
-            <td><a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a> </td>
+            <td>
+                <a href="courseEnroll_page.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Course</a>
+                <a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a>
+                <a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+            </td>
+
         </tr>
         <?php
             }
@@ -88,22 +90,22 @@ if (isset($_GET['delete_msg'])) {
 
                     <div class="modal-body">
                         <label for="fName">First Name</label>
-                        <input type="text" name="fName" class="form-control">
+                        <input type="text" name="fName" class="form-control" required>
                     </div>
 
                     <div class="modal-body">
                         <label for="lName">Last Name</label>
-                        <input type="text" name="lName" class="form-control">
+                        <input type="text" name="lName" class="form-control" required>
                     </div>
 
                     <div class="modal-body">
                         <label for="birthDate">Birthdate</label>
-                        <input type="date" name="birthDate" class="form-control">
+                        <input type="date" name="birthDate" class="form-control" required>
                     </div>
 
                     <div class="modal-body">
                         <label for="contactNum">Contact Number</label>
-                        <input type="text" name="contactNum" class="form-control">
+                        <input type="number" name="contactNum" class="form-control" required>
                     </div>
 
                 </div>
