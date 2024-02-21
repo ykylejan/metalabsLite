@@ -42,9 +42,13 @@ include("metalabsdb.php");
             <td><?php echo $row['birthdate']; ?> </td>
             <td><?php echo "+63" . $row['contact_number']; ?> </td>
             <td>
-                <a href="courseEnroll_page.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Course</a>
-                <a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a>
-                <a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                <div class="column-buttons">
+                    <a href="courseEnroll_page.php?id=<?php echo $row['id']; ?>" class="btn btn-warning">Course</a>
+                    <a href="update_page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a>
+                    <a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                </div>
+
+
             </td>
 
         </tr>
