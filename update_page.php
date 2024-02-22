@@ -3,6 +3,7 @@ include("header.php");
 include("metalabsdb.php");
 ?>
 
+<br><br><br><br>
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

@@ -10,6 +10,19 @@
 </head>
 
 <body>
-    <h1 id="main_title">metaLABS LITE</h1>
+    <nav>
+        <div class="logo">
+            <br><br><br>
+            <p>metaLABS LITE</p>
+        </div>
+
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="archives_page.php">Archives</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+    </nav>
+
     
     <div class="container">
