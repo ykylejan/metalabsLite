@@ -12,7 +12,7 @@
 <body>
     <nav>
         <div class="logo">
-            <br><br><br>
+            <!-- <br><br><br> -->
             <p>metaLABS LITE</p>
         </div>
 
@@ -24,5 +24,5 @@
 
     </nav>
 
-    
     <div class="container">
+    

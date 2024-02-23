@@ -10,15 +10,17 @@
 *{
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
+
 }
 
 nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 11%;
     line-height: 75%;
-    padding: 0px 100px;
-    position: fixed;
+    padding: 20px 100px;
     background-image: linear-gradient(#033747, #012733);
 }
 
@@ -87,3 +89,8 @@ h6{
     border-radius: 10px;
 }
 
+
+.table-container{
+    border: 1px solid red;
+    margin-top: 100px;
+}
