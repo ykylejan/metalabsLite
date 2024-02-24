@@ -27,3 +27,16 @@ h6{
     text-align: center;
     color: red;
 }
+
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+.mreadonly{
+    
+}
+.btn-design{
+    outline-width: 0;
+}
+
