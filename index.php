@@ -125,7 +125,66 @@ include("metalabsdb.php");
 
         </form>
     </div>
+<!-- COURSE MODAL -->
 
+<div class="modal fade" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="btn-design">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Course Details</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                    </div>
+                    </div>
+                <div class="mreadonly">
+                <div class="modal-body2">
+                <form action="insert_data.php" method="post">
+                    <div class="modal-body">
+                        <label for="fName">Student ID</label>
+                        <input type="text" name="studentID" class="form-control d-inline-flex focus-ring text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), 0)" readonly>
+                    </div>
+
+                    <div class="modal-body">
+                        <label for="lName">Full Name</label>
+                        <input type="text" name="fName" class="form-control d-inline-flex focus-ring text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), 0)" readonly>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <label for="contactNum">Year Level</label>
+                        <input type="text" name="yearLVL" class="form-control d-inline-flex focus-ring text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), 0)" readonly>
+                    </div>
+
+                    <div class="modal-body">
+                        <label for="birthDate">College Department</label><br>
+                        <select class="form-select" aria-label="collegeDept">
+                        <option selected>COLLEGE DEPARTMENT</option>
+                        <option value="PS">PS</option>
+                        <option value="CCE">CCE</option>
+                        <option value="CLE">CLE</option>
+                        </select>
+                        <!-- <input type="text" name="collegeDept" class="form-control"> -->
+                        
+                        
+                    </div>
+
+                    
+                    <div class="modal-body">
+                        <label for="contactNum">Enrolled Courses</label>
+                        <input type="text" name="enCourse" class="form-control">
+                    </div>
+
+                    
+
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-success" name="addStudents" value="ADD"></input>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="box2">

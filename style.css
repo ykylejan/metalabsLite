@@ -79,6 +79,19 @@ h6{
     color: red;
 }
 
+.table td.fit, 
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+.mreadonly{
+    
+}
+.btn-design{
+    outline-width: 0;
+}
+
+
 .column-buttons {
     text-align: center;
 }
