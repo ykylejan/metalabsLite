@@ -1,11 +1,62 @@
-#main_title {
+/* #main_title {
     text-align: start;
     background-color: #333;
     color: #fff;
     padding: 20px;
     letter-spacing: 2px;
     font-weight: 500;
+} */
+
+*{
+    margin: 0px;
+    padding: 0px;
+
 }
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 11%;
+    line-height: 75%;
+    padding: 20px 100px;
+    background-image: linear-gradient(#033747, #012733);
+}
+
+nav .logo p {
+    font-size: 30px;
+    font-weight: bold;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+nav ul {
+    float: right;
+}
+
+nav li {
+    display: inline-block;
+    list-style: none;
+}
+
+nav li a {
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0px 30px;
+    color: white;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: rgb(58, 236, 96);
+    transition: all 0.4s ease 0s;
+}
+
+
 
 .box1 h2 {
     float: left;
@@ -40,3 +91,19 @@ h6{
     outline-width: 0;
 }
 
+
+.column-buttons {
+    text-align: center;
+}
+
+.card--container {
+    background: rgb(68, 154, 142);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+
+.table-container{
+    border: 1px solid red;
+    margin-top: 100px;
+}
