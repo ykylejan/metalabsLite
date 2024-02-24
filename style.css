@@ -29,7 +29,6 @@ nav .logo p {
     font-weight: bold;
     float: left;
     color: white;
-    text-transform: uppercase;
     letter-spacing: 1.5px;
     cursor: pointer;
 }
@@ -93,4 +92,8 @@ h6{
 .table-container{
     border: 1px solid red;
     margin-top: 100px;
+}
+
+.header {
+    
 }

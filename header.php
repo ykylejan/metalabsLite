@@ -10,19 +10,20 @@
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <!-- <br><br><br> -->
-            <p>metaLABS LITE</p>
-        </div>
-
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="archives_page.php">Archives</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
-
-    </nav>
+    <header class="header">
+        <nav>
+            <div class="logo">
+                <p>metaLABS LITE</p>
+            </div>
+    
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="archives_page.php">Archives</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+    
+        </nav>
+    </header>
 
     <div class="container">
     
