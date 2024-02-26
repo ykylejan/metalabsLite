@@ -1,161 +1,117 @@
-<?php
-include("header.php");
-include("metalabsdb.php");
+<?php include("partials/head.php") ?>
+<?php include("partials/nav.php") ?>
+<?php include("metalabsdb.php") ?>
 
-//ignore
-
-?>
-<div class="container">
-
-
-
-    <div class="table-container">
-        <div class="box1">
-            <h2>Enrollment</h2>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">ADD
-                STUDENT</button>
+<section class="container mx-auto mt-[100px]">
+    <div class="border p-6 mx-5 md:p-8 shadow-md rounded-[24px]">
+        <div class="flex items-center justify-between gap-x-3">
+            <h2 class="text-lg font-medium text-gray-800">Enrollment</h2>
+            <a href="#" class="flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>
+                    Add Student
+                </span>
+            </a>
         </div>
 
-        <div class="card--container">
-            <table class="table table-hover table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Course</th>
-                        <th>Birthdate</th>
-                        <th>Contact No.</th>
-                        <th>Configuration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                $query = "SELECT * FROM `student_enrollment`";
-                $result = mysqli_query($connection, $query);
+        <div class="flex flex-col mt-6">
+            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 px-6">
+                    <div class="overflow-hidden border border-gray-200  md:rounded-lg ">
+                        <table class="min-w-full divide-y divide-gray-200 ">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">ID</th>
+                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">Name</th>
+                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">Course</th>
+                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">Birthdate</th>
+                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">Modify</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200  ">
+                                <?php
+                                $query = "SELECT * FROM `student_enrollment`";
+                                $result = mysqli_query($connection, $query);
 
-                if (!$result) {
-                    die("query failed" . mysqli_error());
-                } else {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                    <tr>
-                        <td><?php echo $row['id']; ?></td>
-                        <td><?php echo $row['first_name'] . " " .  $row['last_name']; ?></td>
-                        <td><?php echo $row['course']; ?></td>
-                        <td><?php echo $row['birthdate']; ?></td>
-                        <td><?php echo "+63" . $row['contact_number']; ?></td>
-                        <td>
-                            <div class="column-buttons">
-                                <a class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#courseModal">Course</a>
-                                <a href="update_page.php?id=<?php echo $row['id']; ?>"
-                                    class="btn btn-success">Update</a>
-                                <a href="delete_page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php
-                    }
-                }
-                ?>
-                </tbody>
-            </table>
+                                if (!$result) {
+                                    die("query failed" . mysqli_error());
+                                } else {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+                                        <tr>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['id']; ?></td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['first_name'] . " " .  $row['last_name']; ?></td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['course']; ?></td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= "+63" . $row['contact_number']; ?></td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div class="flex items-center gap-x-6 ">
+                                                    <a href="" class="flex flex-row gap-x-3 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                        </svg>
+                                                        <span>
+                                                            Edit Student
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                <?php
+                                    }
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- PAGINATION DIV -->
+        <div class="flex items-center justify-between mt-6">
+            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                </svg>
+
+                <span>
+                    previous
+                </span>
+            </a>
+
+            <div class="items-center hidden lg:flex gap-x-3">
+                <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md  bg-blue-100/60">1</a>
+                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">2</a>
+                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">3</a>
+                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">...</a>
+                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">12</a>
+                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">13</a>
+                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">14</a>
+            </div>
+
+            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
+                <span>
+                    Next
+                </span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                </svg>
+            </a>
+        </div>
+        <!-- END OF PAGINATION DIV -->
+
+
     </div>
-    <?php
+</section>
+
+<?php
 if (isset($_GET['message'])) {
     echo "<h6>" . $_GET['message'] . "</h6>";
 }
 if (isset($_GET['insert_msg']) || isset($_GET['update_msg']) || isset($_GET['delete_msg'])) {
     echo "<h6 class='addSuccess'>" . ($_GET['insert_msg'] ?? $_GET['update_msg'] ?? $_GET['delete_msg']) . "</h6>";
 }
-?>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form action="insert_data.php" method="post">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Student</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <label for="fName">First Name</label>
-                        <input type="text" name="fName" class="form-control" required>
-                        <label for="lName">Last Name</label>
-                        <input type="text" name="lName" class="form-control" required>
-                        <label for="birthDate">Birthdate</label>
-                        <input type="date" name="birthDate" class="form-control" required>
-                        <label for="contactNum">Contact Number</label>
-                        <input type="number" name="contactNum" class="form-control" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-success" name="addStudents" value="ADD">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- COURSE MODAL -->
-
-    <div class="modal fade" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Course Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="insert_data.php" method="post">
-                    <div class="modal-body">
-                        <label for="fName">Student ID</label>
-                        <input type="text" name="studentID"
-                            class="form-control d-inline-flex focus-ring text-decoration-none border rounded-2"
-                            style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), 0)" readonly>
-                        <label for="lName">Full Name</label>
-                        <input type="text" name="fName"
-                            class="form-control d-inline-flex focus-ring text-decoration-none border rounded-2"
-                            style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), 0)" readonly>
-                        <label for="contactNum">Year Level</label>
-                        <input type="text" name="yearLVL"
-                            class="form-control d-inline-flex focus-ring text-decoration-none border rounded-2"
-                            style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), 0)" readonly>
-                        <label for="birthDate">College Department</label><br>
-                        <select class="form-select" aria-label="collegeDept">
-                            <option selected>COLLEGE DEPARTMENT</option>
-                            <option value="PS">PS</option>
-                            <option value="CCE">CCE</option>
-                            <option value="CLE">CLE</option>
-                        </select>
-                        <label for="contactNum">Enrolled Courses</label>
-                        <input type="text" name="enCourse" class="form-control">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-success" name="addStudents" value="ADD">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="box2">
-        <button class="btn btn-primary">Print Form</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-<?php
-include("footer.php");
-
-//change test
-
 ?>
