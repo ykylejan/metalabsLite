@@ -10,16 +10,18 @@ if (isset($_GET['id'])) {
         die("query failed");
     } else {
         while ($row = mysqli_fetch_assoc($result)) {
-            $name = $row['first_name'] . " " . $row['last_name'];
+            $firstName = $row['first_name'];
+            $lastName = $row['last_name'];
             $course = $row['course']; 
             $birthdate = $row['birthdate']; 
             $address = $row['address']; 
             $contactNumber = $row['contact_number']; 
+            $course = $row['course']; 
         }
 
         if (isset($_GET['id'])) {
-            $query = "INSERT INTO `student_archive` (`id`, `name`, `birthdate`, `address`, `contact_number`, `course`) values 
-            ('$id', '$name', '$birthdate', '$address', '$contactNumber', '$course')";
+            $query = "INSERT INTO `student_archive` (`id`, `first_name`, `last_name`, `birthdate`, `address`, `contact_number`, `course`) values 
+            ('$id', '$firstName', '$lastName', '$birthdate', '$address', '$contactNumber', '$course')";
             $result = mysqli_query($connection, $query);
         }
 
