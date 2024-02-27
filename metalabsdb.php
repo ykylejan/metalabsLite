@@ -2,7 +2,7 @@
 
 define("HOSTNAME", "localhost");
 define("USERNAME", "root");
-define("PASSWORD", "root");
+define("PASSWORD", "");
 define("DATABASE", "metalabs_lite");
 
 $connection = mysqli_connect(HOSTNAME,USERNAME,PASSWORD,DATABASE);
