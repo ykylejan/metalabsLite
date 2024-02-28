@@ -10,6 +10,8 @@
 </head>
 
 <body>
+
+<?php include 'addStudentPageDecoy.php'; ?>
     <header class="header">
         <nav>
             <div class="logo">
