@@ -7,48 +7,48 @@ include("metalabsdb.php");
 <script>
 var studentCourses = {
     "College of Engineering Education": {
-    "Bachelor of Science in Chemical Engineering": [],
-    "Bachelor of Science in Mechanical Engineering": [],
-    "Bachelor of Science in Electrical Engineering": [],
-    "Bachelor of Science in Computer Engineering": [],
-    "Bachelor of Science in Civil Engineering": [],  
-  },
-  "College of Computing Education": {
-    "Bachelor of Science in Computer Science": [],
-    "Bachelor of Science in Information Systems": [],
-    "Bachelor of Science in Information Technology": [],
-    "Bachelor of Science in Entertainment and Multimedia Computing": [],
-     "Bachelor of Science in Multimedia Arts": [],
-  },
-  "College of Arts and Science Education": {
-    "Bachelor of Science in Environmental Science": [],
-    "Bachelor of Science in Mathematics": [],
-    "Bachelor of Science in Psychology": [],
-    "Bachelor of Science in Social Work": [],
-    "Bachelor of Science in Forestry": [],
-  },
-  "College of Accounting Education": {
-    "Bachelor of Science in Accountancy": [],
-    "Bachelor of Science in Accounting Technology": [],
-    "Bachelor of Science in Accounting Information System": [],
-    "Bachelor of Science in Internal Auditing": [],
-    "Bachelor of Science in Management Accounting": [],
-  }
+        "Bachelor of Science in Chemical Engineering": [],
+        "Bachelor of Science in Mechanical Engineering": [],
+        "Bachelor of Science in Electrical Engineering": [],
+        "Bachelor of Science in Computer Engineering": [],
+        "Bachelor of Science in Civil Engineering": [],
+    },
+    "College of Computing Education": {
+        "Bachelor of Science in Computer Science": [],
+        "Bachelor of Science in Information Systems": [],
+        "Bachelor of Science in Information Technology": [],
+        "Bachelor of Science in Entertainment and Multimedia Computing": [],
+        "Bachelor of Science in Multimedia Arts": [],
+    },
+    "College of Arts and Science Education": {
+        "Bachelor of Science in Environmental Science": [],
+        "Bachelor of Science in Mathematics": [],
+        "Bachelor of Science in Psychology": [],
+        "Bachelor of Science in Social Work": [],
+        "Bachelor of Science in Forestry": [],
+    },
+    "College of Accounting Education": {
+        "Bachelor of Science in Accountancy": [],
+        "Bachelor of Science in Accounting Technology": [],
+        "Bachelor of Science in Accounting Information System": [],
+        "Bachelor of Science in Internal Auditing": [],
+        "Bachelor of Science in Management Accounting": [],
+    }
 }
 window.onload = function() {
-  var departSel = document.getElementById("department");
-  var coursesSel = document.getElementById("courses");
-  for (var x in studentCourses) {
-    departSel.options[departSel.options.length] = new Option(x, x);
-  }
-  departSel.onchange = function() {
-    //empty Chapters- and Topics- dropdowns
-    coursesSel.length = 1;
-    //display correct values
-    for (var y in studentCourses[this.value]) {
-      coursesSel.options[coursesSel.options.length] = new Option(y, y);
+    var departSel = document.getElementById("department");
+    var coursesSel = document.getElementById("courses");
+    for (var x in studentCourses) {
+        departSel.options[departSel.options.length] = new Option(x, x);
     }
-  }
+    departSel.onchange = function() {
+        //empty Chapters- and Topics- dropdowns
+        coursesSel.length = 1;
+        //display correct values
+        for (var y in studentCourses[this.value]) {
+            coursesSel.options[coursesSel.options.length] = new Option(y, y);
+        }
+    }
 }
 </script>
 
@@ -164,9 +164,10 @@ window.onload = function() {
                         <label for="department"
                             class="block text-sm font-medium leading-6 text-gray-900">Department</label>
                         <div class="mt-2">
-                                <select name="department" id="department" class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset  sm:max-w-xs sm:text-sm sm:leading-6">
+                            <select name="department" id="department"
+                                class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset  sm:max-w-xs sm:text-sm sm:leading-6">
                                 <option value="" selected="selected">Select Department</option>
-                                </select>
+                            </select>
                         </div>
                     </div>
 

@@ -5,7 +5,7 @@ if(isset($_POST['addStudents'])) {
     $lname = $_POST['lName'];
     $contactNum = $_POST['contactNum'];
     $birthdate = $_POST['birthDate'];
-
+    
     if($fname == "" || empty($fname)) {
         header("location: index.php? message= Please write your first name!");
     } else {
