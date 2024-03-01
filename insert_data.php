@@ -5,6 +5,15 @@ if(isset($_POST['addStudents'])) {
     $lname = $_POST['lName'];
     $contactNum = $_POST['contactNum'];
     $birthdate = $_POST['birthDate'];
+    $gender = $_POST['gender'];
+    $streetAddress = $_POST['street-address'];
+    $city = $_POST['city'];
+    $region = $_POST['region'];
+    $postalCode = $_POST['postal-code'];
+    $department = $_POST['department'];
+    $courses = $_POST['courses'];
+    $yearLevel = $_POST['yearLevel'];
+
 
     if($fname == "" || empty($fname)) {
         header("location: index.php? message= Please write your first name!");
