@@ -104,7 +104,7 @@ if (isset($_GET['insert_msg'])) {
                                         <?= "+63" . $row['contact_number']; ?></td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-6 ">
-                                            <a href=""
+                                            <a href="editStudent.php?id=<?php echo $row['id']; ?>"
                                                 class="flex flex-row gap-x-3 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
