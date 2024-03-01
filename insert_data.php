@@ -16,7 +16,7 @@ if(isset($_POST['addStudents'])) {
         if(!$result) {
             die("Query Failed".mysqli_error());
         } else {
-            header("location: index.php? insert_msg= Student enrolled successfully!");
+            header("location: index.php? insert_msg= Student added successfully!");
         }
     }
 }
