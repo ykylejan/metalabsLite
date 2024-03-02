@@ -5,6 +5,45 @@ include("partials/nav.php");
 include("metalabsdb.php");
 ?>
 
+<?php
+if (isset($_GET['restore_msg'])) {
+?>
+
+    <div class="w-full text-white bg-yellow-400">
+        <div class="container flex items-center justify-between px-6 py-4 mx-auto">
+            <div class="flex">
+                <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                    <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z">
+                    </path>
+                </svg>
+
+                <p class="mx-3"><?=$_GET['restore_msg']?></p>
+            </div>
+
+            <button class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+<?php
+}
+?>
+
+
+<!-- search bar -->
+<div class="flex items-center gap-x-2">
+    <input type="text" id="searchInput" class="border p-2 rounded-md focus:outline-none" placeholder="Search...">
+    <button id="searchButton" class="flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Search</span>
+    </button>
+</div>
+
 <section class="container mx-auto mt-[100px]">
     <div class="border p-6 mx-5 md:p-8 shadow-md rounded-[24px]">
         <div class="flex items-center justify-between gap-x-3">
@@ -138,6 +177,23 @@ include("metalabsdb.php");
     </div>
 </section>
 
+<!-- search bar script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchInput').keyup(function() {
+            var searchText = $(this).val().toLowerCase();
+            $('tbody tr').hide();
+            $('tbody tr').each(function() {
+                var rowText = $(this).text().toLowerCase();
+                if (rowText.indexOf(searchText) !== -1) {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -175,9 +231,9 @@ if (isset($_GET['id'])) {
     }
 }
 
-if (isset($_GET['restore_msg'])) {
-    echo "<h6>" . $_GET['restore_msg'] . "</h6>";
-}
+// if (isset($_GET['restore_msg'])) {
+//     echo "<h6>" . $_GET['restore_msg'] . "</h6>";
+// }
 
 include("partials/footer.php");
 ?>
