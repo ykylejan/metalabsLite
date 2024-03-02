@@ -5,13 +5,14 @@ if(isset($_POST['addStudents'])) {
     $lname = $_POST['lName'];
     $contactNum = $_POST['contactNum'];
     $birthdate = $_POST['birthDate'];
-    $gender = $_POST['gender'];
     $streetAddress = $_POST['street-address'];
+    $courses = $_POST['courses'];
+    
+    $gender = $_POST['gender'];
     $city = $_POST['city'];
     $region = $_POST['region'];
     $postalCode = $_POST['postal-code'];
     $department = $_POST['department'];
-    $courses = $_POST['courses'];
     $yearLevel = $_POST['yearLevel'];
 
 
@@ -19,7 +20,8 @@ if(isset($_POST['addStudents'])) {
         header("location: index.php? message= Please write your first name!");
     } else {
         
-        $query = "INSERT INTO `student_enrollment` (`first_name`, `last_name`, `birthdate`, `contact_number`) values ('$fname', '$lname', '$birthdate', '$contactNum')";
+        $query = "INSERT INTO `student_enrollment` (`first_name`, `last_name`, `birthdate`, `contact_number`, `address`, `course`, `gender`,`city`, `region`, `postal_code`, `department`, `year_level`) 
+        values ('$fname', '$lname', '$birthdate', '$contactNum', '$streetAddress', '$courses', '$gender', '$city', '$region', '$postalCode', '$department', '$yearLevel')";
         $result = mysqli_query($connection, $query);
         
         if(!$result) {
