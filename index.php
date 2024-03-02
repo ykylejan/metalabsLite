@@ -94,12 +94,13 @@ document.getElementById("closeButton").addEventListener("click", function() {
 <!-- search bar -->
 
 
-<section class="container mx-auto mt-[100px]">
+<section class="container mx-auto mt-[40px]">
 
-    <div class="flex items-center gap-x-2 ml-5 mb-5">
-        <input type="text" id="searchInput" class="border p-2 rounded-md focus:outline-none" placeholder="Search...">
+    <div class="flex justify-center items-center gap-x-2 ml-5 mb-5 mr-5">
+        <input type="text" id="searchInput"
+            class="drop-shadow-sm border md:pl-6 md:pr-32 p-2 rounded-md focus:outline-none" placeholder="Search...">
         <button id="searchButton"
-            class="flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
+            class="shadow flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.5"
                 class="w-5 h-5">
                 <path fill=" none" d="M0 0h24v24H0z"></path>

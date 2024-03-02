@@ -39,12 +39,12 @@ if (isset($_GET['restore_msg'])) {
 
 
 
-<section class="container mx-auto mt-[100px]">
-    <div class="flex items-center gap-x-2 ml-5 mb-5">
-        <input type="text" id="searchInput" class="border p-2 rounded-md focus:outline-none" placeholder="Search...">
+<section class="container mx-auto mt-[40px]">
+    <div class="flex justify-center items-center gap-x-2 ml-5 mb-5 mr-5">
+        <input type="text" id="searchInput"
+            class="drop-shadow-sm border md:pl-6 md:pr-32 p-2 rounded-md focus:outline-none" placeholder="Search...">
         <button id="searchButton"
-            class="flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
-
+            class="shadow flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.5"
                 class="w-5 h-5">
                 <path fill=" none" d="M0 0h24v24H0z"></path>
@@ -52,8 +52,6 @@ if (isset($_GET['restore_msg'])) {
                     d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
                 </path>
             </svg>
-
-
             <span>Search</span>
         </button>
     </div>
