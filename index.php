@@ -4,94 +4,97 @@
 
 <?php
 if (isset($_GET['insert_msg']) || isset($_GET['update_msg'])) {
-?>
+    ?>
 
-<div class="w-full text-white bg-emerald-500">
-    <div class="container flex items-center justify-between px-6 py-4 mx-auto">
-        <div class="flex">
-            <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
-                <path
-                    d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z">
-                </path>
-            </svg>
+    <div class="w-full text-white bg-emerald-500 ">
+        <div class="container flex items-center justify-between px-6 py-4 mx-auto">
+            <div class="flex">
+                <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                    <path
+                        d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z">
+                    </path>
+                </svg>
 
-            <?php
+                <?php
                 if (isset($_GET['insert_msg'])) {
-                ?>
-            <p class="mx-3"><?php echo $_GET['insert_msg'] ?></p>
+                    ?>
+                    <p class="mx-3">
+                        <?php echo $_GET['insert_msg'] ?>
+                    </p>
 
-            <?php
+                    <?php
                 } else if (isset($_GET['update_msg'])) {
-                ?>
-            <p class="mx-3"><?php echo $_GET['update_msg'] ?></p>
-            <?php
+                    ?>
+                        <p class="mx-3">
+                        <?php echo $_GET['update_msg'] ?>
+                        </p>
+                    <?php
                 } else {
                 }
                 ?>
 
+            </div>
+
+            <button id="closeButton"
+                class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
         </div>
-
-        <button id="closeButton"
-            class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
     </div>
-</div>
 
-<script>
-document.getElementById("closeButton").addEventListener("click", function() {
-    var parentDiv = this.closest('.w-full');
-    parentDiv.style.display = "none";
-});
-</script>
+    <script>
+        document.getElementById("closeButton").addEventListener("click", function () {
+            var parentDiv = this.closest('.w-full');
+            parentDiv.style.display = "none";
+        });
+    </script>
 
 
-<?php
+    <?php
 }
 ?>
 
 <?php
 if (isset($_GET['delete_msg'])) {
-?>
+    ?>
 
-<div class="w-full text-white bg-red-500">
-    <div class="container flex items-center justify-between px-6 py-4 mx-auto">
-        <div class="flex">
-            <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
-                <path
-                    d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z">
-                </path>
-            </svg>
+    <div class="w-full text-white bg-red-500">
+        <div class="container flex items-center justify-between px-6 py-4 mx-auto">
+            <div class="flex">
+                <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                    <path
+                        d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z">
+                    </path>
+                </svg>
 
-            <p class="mx-3"><?= $_GET['delete_msg'] ?></p>
+                <p class="mx-3">
+                    <?= $_GET['delete_msg'] ?>
+                </p>
+            </div>
+
+            <button id="closeButton"
+                class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
         </div>
-
-        <button id="closeButton"
-            class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
     </div>
-</div>
 
-<script>
-document.getElementById("closeButton").addEventListener("click", function() {
-    var parentDiv = this.closest('.w-full');
-    parentDiv.style.display = "none";
-});
-</script>
-<?php
+    <script>
+        document.getElementById("closeButton").addEventListener("click", function () {
+            var parentDiv = this.closest('.w-full');
+            parentDiv.style.display = "none";
+        });
+    </script>
+    <?php
 }
 ?>
 
-
-
-<!-- search bar -->
 
 
 <section class="container mx-auto mt-[40px]">
@@ -158,9 +161,9 @@ document.getElementById("closeButton").addEventListener("click", function() {
                             <tbody class="bg-white divide-y divide-gray-200  ">
                                 <?php
 
-                                $page = isset($_GET['page']) ? $_GET['page'] : 1; 
-                                $rowsPerPage = 6; 
-
+                                $page = isset($_GET['page']) ? $_GET['page'] : 1; // Default page
+                                $rowsPerPage = 6; //Max rows per page
+                                
                                 $query = "SELECT * FROM `student_enrollment` LIMIT " . ($page - 1) * $rowsPerPage . ", $rowsPerPage";
                                 $result = mysqli_query($connection, $query);
 
@@ -168,35 +171,40 @@ document.getElementById("closeButton").addEventListener("click", function() {
                                     die("query failed" . mysqli_error());
                                 } else {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
-                                <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['id']; ?>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['first_name'] . " " .  $row['last_name']; ?></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['course']; ?></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['birthdate']; ?></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= "+63" . $row['contact_number']; ?></td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6 ">
-                                            <a href="editStudent.php?id=<?php echo $row['id']; ?>"
-                                                class="flex flex-row gap-x-3 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                </svg>
-                                                <span>
-                                                    Edit Student
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
+                                        ?>
+                                        <tr>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['id']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['first_name'] . " " . $row['last_name']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['course']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['birthdate']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= "+63" . $row['contact_number']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div class="flex items-center gap-x-6 ">
+                                                    <a href="editStudent.php?id=<?php echo $row['id']; ?>"
+                                                        class="flex flex-row gap-x-3 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                        </svg>
+                                                        <span>
+                                                            Edit Student
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
                                     }
                                 }
 
@@ -204,7 +212,7 @@ document.getElementById("closeButton").addEventListener("click", function() {
                                 $totalResult = mysqli_query($connection, $totalRowsQuery);
                                 $totalRows = mysqli_fetch_assoc($totalResult)['total'];
                                 $totalPages = ceil($totalRows / $rowsPerPage);
-                                
+
                                 ?>
 
                             </tbody>
@@ -230,11 +238,11 @@ document.getElementById("closeButton").addEventListener("click", function() {
             </a>
 
             <div class="items-center hidden lg:flex gap-x-3">
-                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                <a href="?page=<?= $i ?>"
-                    class="px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
-                    <?= $i ?>
-                </a>
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="?page=<?= $i ?>"
+                        class="px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
+                        <?= $i ?>
+                    </a>
                 <?php endfor; ?>
             </div>
 
@@ -256,18 +264,18 @@ document.getElementById("closeButton").addEventListener("click", function() {
 <!-- search bar script -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#searchInput').keyup(function() {
-        var searchText = $(this).val().toLowerCase();
-        $('tbody tr').hide();
-        $('tbody tr').each(function() {
-            var rowText = $(this).text().toLowerCase();
-            if (rowText.indexOf(searchText) !== -1) {
-                $(this).show();
-            }
+    $(document).ready(function () {
+        $('#searchInput').keyup(function () {
+            var searchText = $(this).val().toLowerCase();
+            $('tbody tr').hide();
+            $('tbody tr').each(function () {
+                var rowText = $(this).text().toLowerCase();
+                if (rowText.indexOf(searchText) !== -1) {
+                    $(this).show();
+                }
+            });
         });
     });
-});
 </script>
 
 
