@@ -7,7 +7,7 @@ include("metalabsdb.php");
 
 <?php
 if (isset($_GET['restore_msg'])) {
-?>
+    ?>
 
 <div class="w-full text-white bg-yellow-400">
     <div class="container flex items-center justify-between px-6 py-4 mx-auto">
@@ -18,7 +18,9 @@ if (isset($_GET['restore_msg'])) {
                 </path>
             </svg>
 
-            <p class="mx-3"><?=$_GET['restore_msg']?></p>
+            <p class="mx-3">
+                <?= $_GET['restore_msg'] ?>
+            </p>
         </div>
 
         <button
@@ -90,25 +92,34 @@ if (isset($_GET['restore_msg'])) {
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200  ">
                                 <?php
-                                $query = "SELECT * FROM `student_archive`";
+
+                                $page = isset($_GET['page']) ? $_GET['page'] : 1; // Default page
+                                $rowsPerPage = 6; //Max rows per page
+                                
+                                $query = "SELECT * FROM `student_enrollment` LIMIT " . ($page - 1) * $rowsPerPage . ", $rowsPerPage";
                                 $result = mysqli_query($connection, $query);
 
                                 if (!$result) {
                                     die("query failed" . mysqli_error());
                                 } else {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+                                        ?>
                                 <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['id']; ?>
+                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                        <?= $row['id']; ?>
                                     </td>
                                     <td class="pl-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['first_name'] . $row['last_name']; ?></td>
+                                        <?= $row['first_name'] . $row['last_name']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['course']; ?></td>
+                                        <?= $row['course']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['birthdate']; ?></td>
+                                        <?= $row['birthdate']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= "+63" . $row['contact_number']; ?></td>
+                                        <?= "+63" . $row['contact_number']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-6 ">
 
@@ -133,6 +144,10 @@ if (isset($_GET['restore_msg'])) {
                                 <?php
                                     }
                                 }
+                                $totalRowsQuery = "SELECT COUNT(*) as total FROM `student_archive`";
+                                $totalResult = mysqli_query($connection, $totalRowsQuery);
+                                $totalRows = mysqli_fetch_assoc($totalResult)['total'];
+                                $totalPages = ceil($totalRows / $rowsPerPage);
                                 ?>
 
                             </tbody>
@@ -148,34 +163,27 @@ if (isset($_GET['restore_msg'])) {
 
         <!-- PAGINATION DIV -->
         <div class="flex items-center justify-between mt-6">
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
+            <a href="?page=<?= max($page - 1, 1) ?>"
+                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                 </svg>
-
-                <span>
-                    previous
-                </span>
+                <span>previous</span>
             </a>
 
             <div class="items-center hidden lg:flex gap-x-3">
-                <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md  bg-blue-100/60">1</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">2</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">3</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">...</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">12</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">13</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">14</a>
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?= $i ?>"
+                    class="px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
+                    <?= $i ?>
+                </a>
+                <?php endfor; ?>
             </div>
 
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
-                <span>
-                    Next
-                </span>
-
+            <a href="?page=<?= min($page + 1, $totalPages) ?>"
+                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+                <span>Next</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />

@@ -229,7 +229,7 @@ window.onload = function() {
                         <div class="mt-2">
                             <select name="department" id="department"
                                 class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset  sm:max-w-xs sm:text-sm sm:leading-6">
-                                <option value="<?= $row['course'] ?>" selected="selected">Select Department</option>
+                                <option value="<?= $row['department'] ?>" selected="selected">Select Department</option>
                             </select>
                         </div>
                     </div>
@@ -237,7 +237,7 @@ window.onload = function() {
                     <div class="sm:col-span-2">
                         <label for="courses" class="block text-sm font-medium leading-6 text-gray-900">Courses</label>
                         <div class="mt-2">
-                            <select id="courses" name="courses" value="<?= $row['course'] ?>"
+                            <select id="courses" name="courses"
                                 class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset  sm:max-w-xs sm:text-sm sm:leading-6">
                                 <option value="<?= $row['course'] ?>" selected="selected">Select Course</option>
                             </select>
