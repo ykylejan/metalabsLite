@@ -7,31 +7,33 @@ include("metalabsdb.php");
 
 <?php
 if (isset($_GET['restore_msg'])) {
-?>
+    ?>
 
-<div class="w-full text-white bg-yellow-400">
-    <div class="container flex items-center justify-between px-6 py-4 mx-auto">
-        <div class="flex">
-            <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
-                <path
-                    d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z">
-                </path>
-            </svg>
+    <div class="w-full text-white bg-yellow-400">
+        <div class="container flex items-center justify-between px-6 py-4 mx-auto">
+            <div class="flex">
+                <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                    <path
+                        d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z">
+                    </path>
+                </svg>
 
-            <p class="mx-3"><?=$_GET['restore_msg']?></p>
+                <p class="mx-3">
+                    <?= $_GET['restore_msg'] ?>
+                </p>
+            </div>
+
+            <button
+                class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
         </div>
-
-        <button
-            class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </button>
     </div>
-</div>
 
-<?php
+    <?php
 }
 ?>
 
@@ -90,49 +92,62 @@ if (isset($_GET['restore_msg'])) {
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200  ">
                                 <?php
-                                $query = "SELECT * FROM `student_archive`";
+
+                                $page = isset($_GET['page']) ? $_GET['page'] : 1; // Default page
+                                $rowsPerPage = 6; //Max rows per page
+                                
+                                $query = "SELECT * FROM `student_archive` LIMIT " . ($page - 1) * $rowsPerPage . ", $rowsPerPage";
                                 $result = mysqli_query($connection, $query);
 
                                 if (!$result) {
                                     die("query failed" . mysqli_error());
                                 } else {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
-                                <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['id']; ?>
-                                    </td>
-                                    <td class="pl-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['first_name'] . $row['last_name']; ?></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['course']; ?></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['birthdate']; ?></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= "+63" . $row['contact_number']; ?></td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6 ">
+                                        ?>
+                                        <tr>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['id']; ?>
+                                            </td>
+                                            <td class="pl-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['first_name'] . $row['last_name']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['course']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= $row['birthdate']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                                <?= "+63" . $row['contact_number']; ?>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div class="flex items-center gap-x-6 ">
 
-                                            <a href="archives.php?id=<?php echo $row['id']; ?>"
-                                                class="flex flex-row gap-x-1 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                    <a href="archives.php?id=<?php echo $row['id']; ?>"
+                                                        class="flex flex-row gap-x-1 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
 
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    class="w-5 h-5" fill="rgba(126,126,126,1)">
-                                                    <path fill="none" d="M0 0h24v24H0z"></path>
-                                                    <path
-                                                        d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z">
-                                                    </path>
-                                                </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                            class="w-5 h-5" fill="rgba(126,126,126,1)">
+                                                            <path fill="none" d="M0 0h24v24H0z"></path>
+                                                            <path
+                                                                d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z">
+                                                            </path>
+                                                        </svg>
 
-                                                <span>
-                                                    Restore Student
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
+                                                        <span>
+                                                            Restore Student
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
                                     }
                                 }
+                                $totalRowsQuery = "SELECT COUNT(*) as total FROM `student_archive`";
+                                $totalResult = mysqli_query($connection, $totalRowsQuery);
+                                $totalRows = mysqli_fetch_assoc($totalResult)['total'];
+                                $totalPages = ceil($totalRows / $rowsPerPage);
                                 ?>
 
                             </tbody>
@@ -148,34 +163,27 @@ if (isset($_GET['restore_msg'])) {
 
         <!-- PAGINATION DIV -->
         <div class="flex items-center justify-between mt-6">
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
+            <a href="?page=<?= max($page - 1, 1) ?>"
+                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                 </svg>
-
-                <span>
-                    previous
-                </span>
+                <span>previous</span>
             </a>
 
             <div class="items-center hidden lg:flex gap-x-3">
-                <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md  bg-blue-100/60">1</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">2</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">3</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">...</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">12</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">13</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">14</a>
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="?page=<?= $i ?>"
+                        class="px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
             </div>
 
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
-                <span>
-                    Next
-                </span>
-
+            <a href="?page=<?= min($page + 1, $totalPages) ?>"
+                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+                <span>Next</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
@@ -191,18 +199,18 @@ if (isset($_GET['restore_msg'])) {
 <!-- search bar script -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#searchInput').keyup(function() {
-        var searchText = $(this).val().toLowerCase();
-        $('tbody tr').hide();
-        $('tbody tr').each(function() {
-            var rowText = $(this).text().toLowerCase();
-            if (rowText.indexOf(searchText) !== -1) {
-                $(this).show();
-            }
+    $(document).ready(function () {
+        $('#searchInput').keyup(function () {
+            var searchText = $(this).val().toLowerCase();
+            $('tbody tr').hide();
+            $('tbody tr').each(function () {
+                var rowText = $(this).text().toLowerCase();
+                if (rowText.indexOf(searchText) !== -1) {
+                    $(this).show();
+                }
+            });
         });
     });
-});
 </script>
 
 <?php
