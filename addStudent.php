@@ -52,9 +52,47 @@ window.onload = function() {
 }
 </script>
 
-<form action="insert_data.php" method="post">
-    <div
-        class="space-y-12 border p-10 sm:rounded-[24px] sm:my-10 sm:mx-10 lg:mx-36 lg:my-10 md:p-8 lg:p-10 md:m-10 shadow-md rounded-[0] md:rounded-[24px] lg:rounded-[24px]">
+<!-- form validation -->
+<script>
+function validateForm() {
+    var fname = document.getElementById("first-name").value;
+    var lname = document.getElementById("last-name").value;
+    var contactNum = document.getElementById("contact-num").value;
+    var birthDate = document.getElementById("birthDate").value;
+    var streetAddress = document.getElementById("street-address").value;
+    var courses = document.getElementById("courses").value;
+    var gender = document.getElementById("gender").value;
+    var city = document.getElementById("city").value;
+    var region = document.getElementById("region").value;
+    var postalCode = document.getElementById("postal-code").value;
+    var department = document.getElementById("department").value;
+    var yearLevel = document.getElementById("yearLevel").value;
+
+    if (fname === "" || lname === "" || contactNum === "" || birthDate === "" || streetAddress === "" || courses ===
+        "" || gender === "" || city === "" || region === "" || postalCode === "" || department === "" || yearLevel ===
+        "") {
+        alert("Please fill out all the necessary details.");
+        return false;
+    }
+
+    var currentDate = new Date();
+    var enteredBirthDate = new Date(birthDate);
+
+    if (enteredBirthDate >= currentDate) {
+        alert("Invalid birthdate. Please enter a valid birthdate.");
+        return false;
+    }
+
+    return true;
+
+}
+</script>
+
+<!-- end of form validation -->
+
+<form method="post" action="insert_data.php" onsubmit="return validateForm()">
+    <div class=" space-y-12 border p-10 sm:rounded-[24px] sm:my-10 sm:mx-10 lg:mx-36 lg:my-10 md:p-8 lg:p-10 md:m-10
+    shadow-md rounded-[0] md:rounded-[24px] lg:rounded-[24px]">
         <div class=" pb-12">
 
             <div class="border-b border-gray-900/10 pb-12">
@@ -76,7 +114,8 @@ window.onload = function() {
                         <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last
                             name</label>
                         <div class="mt-2">
-                            <input type="text" name="lName" id="last-name" autocomplete="family-name"
+                            <input type="text" name="lName" id="last-name" autocomplete="family-name" value="<?php if (isset($_POST['lName']))
+                                echo $_POST['lName']; ?>"
                                 class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6">
                         </div>
                     </div>
