@@ -225,13 +225,13 @@ include("metalabsdb.php");
                         <div class="mt-2">
                             <select id="yearLevel" name="yearLevel"
                                 class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset  sm:max-w-xs sm:text-sm sm:leading-6">
-                                <option>Select Year Level</option>
-                                <option>1st Year</option>
-                                <option>2nd Year</option>
-                                <option>3rd Year</option>
-                                <option>4th Year</option>
-                                <option>5th Year</option>
-                                <option>Beyond</option>
+                                <option value="Select Year Level">Select Year Level</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="5th Year">5th Year</option>
+                                <option value="Beyond">Beyond</option>
                             </select>
                         </div>
                     </div>

@@ -318,14 +318,19 @@ function validateForm() {
             <a href="index.php" action="index.php"
                 class="border rounded-md px-7 py-1 border-gray-400 text-sm font-semibold leading-6 text-gray-900">Cancel</a>
 
-            <a href="delete_page.php?id=<?= $row['id']; ?>" action="index.php"
-                class="border rounded-md px-7 py-1 border-red-500 bg-red-500 text-sm font-semibold leading-6 text-white">Delete
-                Student</a>
+            <a href="#" onclick="confirmDelete(<?= $row['id']; ?>)" class="border rounded-md px-7 py-1 border-red-500 bg-red-500 text-sm font-semibold leading-6 text-white">Delete Student</a>
 
-            <input value="Update Student" type="submit" name="updateStudent"
-                class="cursor-pointer rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" />
-
+            <input value="Update Student" type="submit" name="updateStudent" class="cursor-pointer rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" />
         </div>
+
+        <script>
+            function confirmDelete(id) {
+                if (confirm("Are you sure you want to delete this student?")) {
+                    window.location.href = 'delete_page.php?id=' + id;
+                }
+            }
+        </script>
+
 
 
 </form>

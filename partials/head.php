@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="tailwind.config.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
 </head>
 </body>

@@ -23,7 +23,7 @@ if (isset($_GET['restore_msg'])) {
             </p>
         </div>
 
-        <button
+        <button id="closeButton"
             class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -32,13 +32,16 @@ if (isset($_GET['restore_msg'])) {
         </button>
     </div>
 </div>
+<script>
+document.getElementById("closeButton").addEventListener("click", function() {
+    var parentDiv = this.closest('.w-full');
+    parentDiv.style.display = "none";
+});
+</script>
 
 <?php
 }
 ?>
-
-
-
 
 
 <section class="container mx-auto mt-[40px]">
@@ -109,7 +112,7 @@ if (isset($_GET['restore_msg'])) {
                                         <?= $row['id']; ?>
                                     </td>
                                     <td class="pl-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['first_name'] . $row['last_name']; ?>
+                                        <?= $row['first_name'] . " " . $row['last_name']; ?>
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                                         <?= $row['course']; ?>
@@ -123,16 +126,25 @@ if (isset($_GET['restore_msg'])) {
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-6 ">
 
-                                            <a href="archives.php?id=<?php echo $row['id']; ?>"
-                                                class="flex flex-row gap-x-2 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                            <a href="#" onclick="confirmRestore(<?= $row['id'] ?>)"
+                                                class="flex flex-row gap-x-3 text-pink-400 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+
+                                                <script>
+                                                function confirmRestore(id) {
+                                                    if (confirm("Are you sure you want to restore this record?")) {
+                                                        window.location.href = 'archives.php?id=' + id;
+                                                    }
+                                                }
+                                                </script>
 
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                                    fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5"
-                                                    class="w-5 h-5">
-
-                                                    <path fill="#9e9e9e"
+                                                    fill="none" viewBox="0 0 24 24" stroke-width="1"
+                                                    stroke="currentColor" class="w-5 h-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        fill="rgba(244,144,182)"
                                                         d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z" />
                                                 </svg>
+
                                                 <span>
                                                     Restore Student
                                                 </span>
@@ -228,11 +240,17 @@ if (isset($_GET['id'])) {
             $address = $row['address'];
             $contactNumber = $row['contact_number'];
             $course = $row['course'];
+            $gender = $row['gender'];
+            $city = $row['city'];
+            $region = $row['region'];
+            $postalCode = $row['postal_code'];
+            $department = $row['department'];
+            $yearLevel = $row['year_level'];
         }
 
         if (isset($_GET['id'])) {
-            $query = "INSERT INTO `student_enrollment` (`id`, `first_name`, `last_name`, `birthdate`, `address`, `contact_number`, `course`) values
-            ('$id', '$firstName', '$lastName', '$birthdate', '$address', '$contactNumber', '$course')";
+            $query = "INSERT INTO `student_enrollment` (`id`, `first_name`, `last_name`, `birthdate`, `address`, `contact_number`, `course`, `gender`, `city`, `region`, `postal_code`, `department`, `year_level`) values
+            ('$id', '$firstName', '$lastName', '$birthdate', '$address', '$contactNumber', '$course', '$gender', '$city', '$region', '$postalCode', '$department', '$yearLevel')";
             $result = mysqli_query($connection, $query);
         }
 
