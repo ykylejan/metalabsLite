@@ -63,7 +63,17 @@ document.getElementById("closeButton").addEventListener("click", function() {
     <div class="border p-6 mx-5 md:p-8 shadow-md rounded-[24px]">
 
         <div class="flex items-center justify-between gap-x-3">
-            <h2 class="text-lg font-medium text-gray-800">Archives</h2>
+            <div>
+                <h2 class="text-lg font-medium text-gray-800">Archives</h2>
+                <p class="text-gray-500 w-96 lg:w-auto hidden md:flex">This section oversees the registration and
+                    deletion of
+                    student
+                    records
+                    within
+                    the
+                    Metalabs system.
+                </p>
+            </div>
         </div>
 
         <div class="flex flex-col mt-6">
@@ -185,8 +195,8 @@ document.getElementById("closeButton").addEventListener("click", function() {
 
             <div class="items-center hidden lg:flex gap-x-3">
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <a href="?page=<?= $i ?>"
-                    class="px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
+                <a href="?page=<?= $i ?>" class=" px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md
+                    <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
                     <?= $i ?>
                 </a>
                 <?php endfor; ?>
