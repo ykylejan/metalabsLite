@@ -37,7 +37,7 @@ if (isset($_POST['addStudents'])) {
         if (!$result) {
             die("Query Failed" . mysqli_error());
         } else {
-            header("location: index.php? insert_msg= Student added successfully!");
+            header("location: home.php? insert_msg= Student added successfully!");
         }
     }
 }

@@ -42,7 +42,7 @@ if (isset($_POST['updateStudent'])) {
     if (!$result) {
         die("Query failed: " . mysqli_error($connection));
     } else {
-        header('Location: index.php?update_msg=You have successfully updated a student record.');
+        header('Location: home.php?update_msg=You have successfully updated a student record.');
         exit();
     }
 }
@@ -315,7 +315,7 @@ function validateForm() {
 
 
         <div class="mt-6 flex items-center justify-end gap-x-4">
-            <a href="index.php" action="index.php"
+            <a href="home.php" action="home.php"
                 class="border rounded-md px-7 py-1 border-gray-400 text-sm font-semibold leading-6 text-gray-900">Cancel</a>
 
             <a href="#" onclick="confirmDelete(<?= $row['id']; ?>)" class="border rounded-md px-7 py-1 border-red-500 bg-red-500 text-sm font-semibold leading-6 text-white">Delete Student</a>

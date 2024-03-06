@@ -6,7 +6,7 @@
             <div class="flex justify-center items-center gap-x-2">
 
                 <img class="h-10 w-auto" src="partials/metalabsLogo.png" alt="" />
-                <a href="index.php" class="text-white text-3xl ">
+                <a href="home.php" class="text-white text-3xl ">
 
                     meta<span class="font-bold">LABS LITE</span>
                 </a>
@@ -35,11 +35,11 @@
             class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-blue-600 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
             <div class="flex flex-col md:flex-row md:mx-6">
                 <a class="hover:bg-blue-700 lg:px-[15px] lg:py-[5px] rounded-md my-2 text-white transition-colors duration-300 transform md:mx-4 md:my-0"
-                    href="index.php">Home</a>
+                    href="home.php">Home</a>
                 <a class="hover:bg-blue-700 lg:px-[15px] lg:py-[5px] rounded-md my-2 text-white transition-colors duration-300 transform md:mx-4 md:my-0"
                     href="archives.php">Archives</a>
                 <a class="hover:bg-blue-700 lg:px-[15px] lg:py-[5px] rounded-md my-2 text-white transition-colors duration-300 transform md:mx-4 md:my-0"
-                    href="landing.php">About</a>
+                    href="about.php">About</a>
             </div>
 
 

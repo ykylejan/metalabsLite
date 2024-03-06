@@ -245,7 +245,7 @@ include("metalabsdb.php");
 
 
         <div class="mt-6 flex items-center justify-end gap-x-4">
-            <a href="index.php" action="index.php"
+            <a href="home.php" action="home.php"
                 class="border rounded-md px-7 py-1 border-gray-400 text-sm font-semibold leading-6 text-gray-900">Cancel</a>
             <input value="Add Student" type="submit" name="addStudents"
                 class="cursor-pointer rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" />

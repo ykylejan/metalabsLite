@@ -44,5 +44,5 @@ if (!$result) {
     // die("Query Failed".mysqli_error($connection));
     die("Query Failed");
 } else {
-    header('Location: index.php?delete_msg=You have deleted a record');
+    header('Location: home.php?delete_msg=You have deleted a record');
 }
