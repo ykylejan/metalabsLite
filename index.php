@@ -15,14 +15,14 @@ if (isset($_GET['insert_msg']) || isset($_GET['update_msg'])) {
                 </path>
             </svg>
 
-                <?php
+            <?php
                 if (isset($_GET['insert_msg'])) {
                     ?>
             <p class="mx-3">
                 <?php echo $_GET['insert_msg'] ?>
             </p>
 
-                <?php
+            <?php
                 } else if (isset($_GET['update_msg'])) {
                     ?>
             <p class="mx-3">
@@ -33,22 +33,24 @@ if (isset($_GET['insert_msg']) || isset($_GET['update_msg'])) {
                 }
                 ?>
 
-            </div>
-
-            <button id="closeButton" class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
         </div>
-    </div>
 
-    <script>
-        document.getElementById("closeButton").addEventListener("click", function() {
-            var parentDiv = this.closest('.w-full');
-            parentDiv.style.display = "none";
-        });
-    </script>
+        <button id="closeButton"
+            class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+document.getElementById("closeButton").addEventListener("click", function() {
+    var parentDiv = this.closest('.w-full');
+    parentDiv.style.display = "none";
+});
+</script>
 
 
 <?php
@@ -74,20 +76,22 @@ if (isset($_GET['delete_msg'])) {
             </p>
         </div>
 
-            <button id="closeButton" class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
+        <button id="closeButton"
+            class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
     </div>
+</div>
 
-    <script>
-        document.getElementById("closeButton").addEventListener("click", function() {
-            var parentDiv = this.closest('.w-full');
-            parentDiv.style.display = "none";
-        });
-    </script>
+<script>
+document.getElementById("closeButton").addEventListener("click", function() {
+    var parentDiv = this.closest('.w-full');
+    parentDiv.style.display = "none";
+});
+</script>
 <?php
 }
 ?>
@@ -97,11 +101,15 @@ if (isset($_GET['delete_msg'])) {
 <section class="container mx-auto mt-[40px]">
 
     <div class="flex justify-center items-center gap-x-2 ml-5 mb-5 mr-5">
-        <input type="text" id="searchInput" class="drop-shadow-sm border md:pl-6 md:pr-32 p-2 rounded-md focus:outline-none" placeholder="Search...">
-        <button id="searchButton" class="shadow flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.5" class="w-5 h-5">
+        <input type="text" id="searchInput"
+            class="drop-shadow-sm border md:pl-6 md:pr-32 p-2 rounded-md focus:outline-none" placeholder="Search...">
+        <button id="searchButton"
+            class="shadow flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke-width="1.5"
+                class="w-5 h-5">
                 <path fill=" none" d="M0 0h24v24H0z"></path>
-                <path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
+                <path
+                    d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
                 </path>
             </svg>
             <span>Search</span>
@@ -110,7 +118,24 @@ if (isset($_GET['delete_msg'])) {
 
     <div class="border p-6 mx-5 md:p-8 shadow-md rounded-[24px]">
         <div class="flex items-center justify-between gap-x-3">
-            <h2 class="text-lg font-medium text-gray-800">Enrollment</h2>
+
+            <div>
+                <div class="flex items-center gap-x-3">
+                    <h2 class="text-lg font-medium text-gray-800">Enrollment </h2>
+
+                </div>
+
+                <p class="text-gray-500 w-96 lg:w-auto hidden md:flex">This section oversees the registration and
+                    deletion of
+                    student
+                    records
+                    within
+                    the
+                    Metalabs system.
+                </p>
+
+            </div>
+
             <a href="addStudent.php"
                 class="flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -122,6 +147,8 @@ if (isset($_GET['delete_msg'])) {
                     Add Student
                 </span>
             </a>
+
+
         </div>
 
         <div class="flex flex-col mt-6">
@@ -131,17 +158,23 @@ if (isset($_GET['delete_msg'])) {
                         <table class="min-w-full divide-y divide-gray-200 ">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         ID</th>
-                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Name</th>
-                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Course</th>
-                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Birthdate</th>
-                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Contact Number</th>
-                                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Modify</th>
                                 </tr>
                             </thead>
@@ -251,18 +284,18 @@ if (isset($_GET['delete_msg'])) {
 <!-- search bar script -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#searchInput').keyup(function() {
-            var searchText = $(this).val().toLowerCase();
-            $('tbody tr').hide();
-            $('tbody tr').each(function() {
-                var rowText = $(this).text().toLowerCase();
-                if (rowText.indexOf(searchText) !== -1) {
-                    $(this).show();
-                }
-            });
+$(document).ready(function() {
+    $('#searchInput').keyup(function() {
+        var searchText = $(this).val().toLowerCase();
+        $('tbody tr').hide();
+        $('tbody tr').each(function() {
+            var rowText = $(this).text().toLowerCase();
+            if (rowText.indexOf(searchText) !== -1) {
+                $(this).show();
+            }
         });
     });
+});
 </script>
 
 

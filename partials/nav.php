@@ -1,10 +1,17 @@
 <nav x-data="{ isOpen: false }" class="relative bg-blue-600 shadow-xl py-2">
     <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div class="flex items-center justify-between">
-            <a href="#" class="text-white text-3xl">
-                <!-- <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt=""> -->
-                meta<span class="font-bold">LABS LITE</span>
-            </a>
+
+
+            <div class="flex justify-center items-center gap-x-2">
+
+                <img class="h-10 w-auto" src="partials/metalabsLogo.png" alt="" />
+                <a href="index.php" class="text-white text-3xl ">
+
+                    meta<span class="font-bold">LABS LITE</span>
+                </a>
+            </div>
+
 
             <!-- Mobile menu button -->
             <div class="flex md:hidden">
