@@ -5,56 +5,94 @@ include("metalabsdb.php");
 ?>
 
 <script>
-var studentCourses = {
-    "College of Engineering Education": {
-        "Bachelor of Science in Chemical Engineering": [],
-        "Bachelor of Science in Mechanical Engineering": [],
-        "Bachelor of Science in Electrical Engineering": [],
-        "Bachelor of Science in Computer Engineering": [],
-        "Bachelor of Science in Civil Engineering": [],
-    },
-    "College of Computing Education": {
-        "Bachelor of Science in Computer Science": [],
-        "Bachelor of Science in Information Systems": [],
-        "Bachelor of Science in Information Technology": [],
-        "Bachelor of Science in Entertainment and Multimedia Computing": [],
-        "Bachelor of Science in Multimedia Arts": [],
-    },
-    "College of Arts and Science Education": {
-        "Bachelor of Science in Environmental Science": [],
-        "Bachelor of Science in Mathematics": [],
-        "Bachelor of Science in Psychology": [],
-        "Bachelor of Science in Social Work": [],
-        "Bachelor of Science in Forestry": [],
-    },
-    "College of Accounting Education": {
-        "Bachelor of Science in Accountancy": [],
-        "Bachelor of Science in Accounting Technology": [],
-        "Bachelor of Science in Accounting Information System": [],
-        "Bachelor of Science in Internal Auditing": [],
-        "Bachelor of Science in Management Accounting": [],
-    }
-}
-window.onload = function() {
-    var departSel = document.getElementById("department");
-    var coursesSel = document.getElementById("courses");
-    for (var x in studentCourses) {
-        departSel.options[departSel.options.length] = new Option(x, x);
-    }
-    departSel.onchange = function() {
-        //empty Chapters- and Topics- dropdowns
-        coursesSel.length = 1;
-        //display correct values
-        for (var y in studentCourses[this.value]) {
-            coursesSel.options[coursesSel.options.length] = new Option(y, y);
+    var studentCourses = {
+        "College of Engineering Education": {
+            "Bachelor of Science in Chemical Engineering": [],
+            "Bachelor of Science in Mechanical Engineering": [],
+            "Bachelor of Science in Electrical Engineering": [],
+            "Bachelor of Science in Computer Engineering": [],
+            "Bachelor of Science in Civil Engineering": [],
+        },
+        "College of Computing Education": {
+            "Bachelor of Science in Computer Science": [],
+            "Bachelor of Science in Information Systems": [],
+            "Bachelor of Science in Information Technology": [],
+            "Bachelor of Science in Entertainment and Multimedia Computing": [],
+            "Bachelor of Science in Multimedia Arts": [],
+        },
+        "College of Arts and Science Education": {
+            "Bachelor of Science in Environmental Science": [],
+            "Bachelor of Science in Mathematics": [],
+            "Bachelor of Science in Psychology": [],
+            "Bachelor of Science in Social Work": [],
+            "Bachelor of Science in Forestry": [],
+        },
+        "College of Accounting Education": {
+            "Bachelor of Science in Accountancy": [],
+            "Bachelor of Science in Accounting Technology": [],
+            "Bachelor of Science in Accounting Information System": [],
+            "Bachelor of Science in Internal Auditing": [],
+            "Bachelor of Science in Management Accounting": [],
         }
     }
-}
+    window.onload = function () {
+        var departSel = document.getElementById("department");
+        var coursesSel = document.getElementById("courses");
+        for (var x in studentCourses) {
+            departSel.options[departSel.options.length] = new Option(x, x);
+        }
+        departSel.onchange = function () {
+            //empty Chapters- and Topics- dropdowns
+            coursesSel.length = 1;
+            //display correct values
+            for (var y in studentCourses[this.value]) {
+                coursesSel.options[coursesSel.options.length] = new Option(y, y);
+            }
+        }
+    }
 </script>
 
-<form action="insert_data.php" method="post">
-    <div
-        class="space-y-12 border p-10 sm:rounded-[24px] sm:my-10 sm:mx-10 lg:mx-36 lg:my-10 md:p-8 lg:p-10 md:m-10 shadow-md rounded-[0] md:rounded-[24px] lg:rounded-[24px]">
+<!-- form validation -->
+<script>
+    function validateForm() {
+        var fname = document.getElementById("first-name").value;
+        var lname = document.getElementById("last-name").value;
+        var contactNum = document.getElementById("contact-num").value;
+        var birthDate = document.getElementById("birthDate").value;
+        var streetAddress = document.getElementById("street-address").value;
+        var courses = document.getElementById("courses").value;
+        var gender = document.getElementById("gender").value;
+        var city = document.getElementById("city").value;
+        var region = document.getElementById("region").value;
+        var postalCode = document.getElementById("postal-code").value;
+        var department = document.getElementById("department").value;
+        var yearLevel = document.getElementById("yearLevel").value;
+
+        if (fname === "" || lname === "" || contactNum === "" || birthDate === "" || streetAddress === "" || courses ===
+            "" || gender === "" || city === "" || region === "" || postalCode === "" || department === "" || yearLevel ===
+            "") {
+            alert("Please fill out all the necessary details.");
+            return false;
+        }
+
+        var currentDate = new Date();
+        var enteredBirthDate = new Date(birthDate);
+
+        if (enteredBirthDate >= currentDate) {
+            alert("Invalid birthdate. Please enter a valid birthdate.");
+            return false;
+        }
+
+        return true;
+
+    }
+</script>
+
+<!-- end of form validation -->
+
+<form method="post" action="insert_data.php" onsubmit="return validateForm()">
+    <div class=" space-y-12 border p-10 sm:rounded-[24px] sm:my-10 sm:mx-10 lg:mx-36 lg:my-10 md:p-8 lg:p-10 md:m-10
+    shadow-md rounded-[0] md:rounded-[24px] lg:rounded-[24px]">
         <div class=" pb-12">
 
             <div class="border-b border-gray-900/10 pb-12">
@@ -187,13 +225,13 @@ window.onload = function() {
                         <div class="mt-2">
                             <select id="yearLevel" name="yearLevel"
                                 class="px-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset  sm:max-w-xs sm:text-sm sm:leading-6">
-                                <option>Select Year Level</option>
-                                <option>1st Year</option>
-                                <option>2nd Year</option>
-                                <option>3rd Year</option>
-                                <option>4th Year</option>
-                                <option>5th Year</option>
-                                <option>Beyond</option>
+                                <option value="Select Year Level">Select Year Level</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                <option value="5th Year">5th Year</option>
+                                <option value="Beyond">Beyond</option>
                             </select>
                         </div>
                     </div>

@@ -6,7 +6,7 @@
 if (isset($_GET['insert_msg']) || isset($_GET['update_msg'])) {
     ?>
 
-<div class="w-full text-white bg-emerald-500">
+<div class="w-full text-white bg-emerald-500 ">
     <div class="container flex items-center justify-between px-6 py-4 mx-auto">
         <div class="flex">
             <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
@@ -17,13 +17,17 @@ if (isset($_GET['insert_msg']) || isset($_GET['update_msg'])) {
 
                 <?php
                 if (isset($_GET['insert_msg'])) {
-                ?>
-            <p class="mx-3"><?php echo $_GET['insert_msg'] ?></p>
+                    ?>
+            <p class="mx-3">
+                <?php echo $_GET['insert_msg'] ?>
+            </p>
 
                 <?php
                 } else if (isset($_GET['update_msg'])) {
-                ?>
-            <p class="mx-3"><?php echo $_GET['update_msg'] ?></p>
+                    ?>
+            <p class="mx-3">
+                <?php echo $_GET['update_msg'] ?>
+            </p>
             <?php
                 } else {
                 }
@@ -58,13 +62,16 @@ if (isset($_GET['delete_msg'])) {
 <div class="w-full text-white bg-red-500">
     <div class="container flex items-center justify-between px-6 py-4 mx-auto">
         <div class="flex">
-            <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(255,255,255,1)" class="h-5 w-5">
+                <path fill="none" d="M0 0h24v24H0z"></path>
                 <path
-                    d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z">
+                    d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM9 11V17H11V11H9ZM13 11V17H15V11H13ZM9 4V6H15V4H9Z">
                 </path>
             </svg>
 
-            <p class="mx-3"><?= $_GET['delete_msg'] ?></p>
+            <p class="mx-3">
+                <?= $_GET['delete_msg'] ?>
+            </p>
         </div>
 
             <button id="closeButton" class="p-1 transition-colors duration-300 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
@@ -104,7 +111,7 @@ if (isset($_GET['delete_msg'])) {
     <div class="border p-6 mx-5 md:p-8 shadow-md rounded-[24px]">
         <div class="flex items-center justify-between gap-x-3">
             <h2 class="text-lg font-medium text-gray-800">Enrollment</h2>
-            <a href="addStudentPageDecoy.php"
+            <a href="addStudent.php"
                 class="flex items-center px-5 py-2 text-sm text-white capitalize transition-colors duration-200 bg-blue-500 border rounded-md gap-x-2 hover:bg-blue-400">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5">
@@ -151,22 +158,27 @@ if (isset($_GET['delete_msg'])) {
                                     die("query failed" . mysqli_error());
                                 } else {
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+                                        ?>
                                 <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap"><?= $row['id']; ?>
+                                    <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                                        <?= $row['id']; ?>
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['first_name'] . " " .  $row['last_name']; ?></td>
+                                        <?= $row['first_name'] . " " . $row['last_name']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['course']; ?></td>
+                                        <?= $row['course']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= $row['birthdate']; ?></td>
+                                        <?= $row['birthdate']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-                                        <?= "+63" . $row['contact_number']; ?></td>
+                                        <?= "+63" . $row['contact_number']; ?>
+                                    </td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-6 ">
                                             <a href="editStudent.php?id=<?php echo $row['id']; ?>"
-                                                class="flex flex-row gap-x-3 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                class="flex flex-row gap-x-3 text-cyan-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -203,8 +215,8 @@ if (isset($_GET['delete_msg'])) {
 
         <!-- PAGINATION DIV -->
         <div class="flex items-center justify-between mt-6">
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
+            <a href="?page=<?= max($page - 1, 1) ?>"
+                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
@@ -221,12 +233,9 @@ if (isset($_GET['delete_msg'])) {
                 <?php endfor; ?>
             </div>
 
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
-                <span>
-                    Next
-                </span>
-
+            <a href="?page=<?= min($page + 1, $totalPages) ?>"
+                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+                <span>Next</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />

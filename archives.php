@@ -83,7 +83,11 @@ if (isset($_GET['restore_msg'])) {
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200  ">
                                 <?php
-                                $query = "SELECT * FROM `student_archive`";
+
+                                $page = isset($_GET['page']) ? $_GET['page'] : 1; // Default page
+                                $rowsPerPage = 6; //Max rows per page
+
+                                $query = "SELECT * FROM `student_archive` LIMIT " . ($page - 1) * $rowsPerPage . ", $rowsPerPage";
                                 $result = mysqli_query($connection, $query);
 
                                 if (!$result) {
@@ -105,20 +109,18 @@ if (isset($_GET['restore_msg'])) {
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div class="flex items-center gap-x-6 ">
 
-                                                    <a href="#" onclick="confirmRestore(<?= $row['id']?>)" class="flex flex-row gap-x-1 text-gray-500 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                    <a href="#" onclick="confirmRestore(<?= $row['id'] ?>)" class="flex flex-row gap-x-3 text-pink-400 transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
 
-                                                    <script>
-                                                        function confirmRestore(id) {
-                                                            if (confirm("Are you sure you want to restore this record?")) {
-                                                                window.location.href = 'archives.php?id=' + id;
+                                                        <script>
+                                                            function confirmRestore(id) {
+                                                                if (confirm("Are you sure you want to restore this record?")) {
+                                                                    window.location.href = 'archives.php?id=' + id;
+                                                                }
                                                             }
-                                                        }
-                                                    </script>
-                                                    
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="rgba(126,126,126,1)">
-                                                            <path fill="none" d="M0 0h24v24H0z"></path>
-                                                            <path d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z">
-                                                            </path>
+                                                        </script>
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-5 h-5" >
+                                                            <path stroke-linecap="round" stroke-linejoin="round" fill="rgba(244,144,182)" d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z" />
                                                         </svg>
 
                                                         <span>
@@ -131,6 +133,10 @@ if (isset($_GET['restore_msg'])) {
                                 <?php
                                     }
                                 }
+                                $totalRowsQuery = "SELECT COUNT(*) as total FROM `student_archive`";
+                                $totalResult = mysqli_query($connection, $totalRowsQuery);
+                                $totalRows = mysqli_fetch_assoc($totalResult)['total'];
+                                $totalPages = ceil($totalRows / $rowsPerPage);
                                 ?>
 
                             </tbody>
@@ -146,31 +152,23 @@ if (isset($_GET['restore_msg'])) {
 
         <!-- PAGINATION DIV -->
         <div class="flex items-center justify-between mt-6">
-            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
+            <a href="?page=<?= max($page - 1, 1) ?>" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                 </svg>
-
-                <span>
-                    previous
-                </span>
+                <span>previous</span>
             </a>
 
             <div class="items-center hidden lg:flex gap-x-3">
-                <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md  bg-blue-100/60">1</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">2</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">3</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">...</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">12</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">13</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md   hover:bg-gray-100">14</a>
+                <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                    <a href="?page=<?= $i ?>" class="px-2 py-1 text-sm <?= $i == $page ? 'text-blue-500' : 'text-gray-500' ?> rounded-md <?= $i == $page ? 'bg-blue-100/60' : 'hover:bg-gray-100' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
             </div>
 
-            <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100    ">
-                <span>
-                    Next
-                </span>
-
+            <a href="?page=<?= min($page + 1, $totalPages) ?>" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+                <span>Next</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                 </svg>
@@ -215,11 +213,17 @@ if (isset($_GET['id'])) {
             $address = $row['address'];
             $contactNumber = $row['contact_number'];
             $course = $row['course'];
+            $gender = $row['gender'];
+            $city = $row['city'];
+            $region = $row['region'];
+            $postalCode = $row['postal_code'];
+            $department = $row['department'];
+            $yearLevel = $row['year_level'];
         }
 
         if (isset($_GET['id'])) {
-            $query = "INSERT INTO `student_enrollment` (`id`, `first_name`, `last_name`, `birthdate`, `address`, `contact_number`, `course`) values
-            ('$id', '$firstName', '$lastName', '$birthdate', '$address', '$contactNumber', '$course')";
+            $query = "INSERT INTO `student_enrollment` (`id`, `first_name`, `last_name`, `birthdate`, `address`, `contact_number`, `course`, `gender`, `city`, `region`, `postal_code`, `department`, `year_level`) values
+            ('$id', '$firstName', '$lastName', '$birthdate', '$address', '$contactNumber', '$course', '$gender', '$city', '$region', '$postalCode', '$department', '$yearLevel')";
             $result = mysqli_query($connection, $query);
         }
 

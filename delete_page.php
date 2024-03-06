@@ -16,14 +16,14 @@ if (isset($_GET['id'])) {
             $birthdate = $row['birthdate'];
             $address = $row['address'];
             $contactNumber = $row['contact_number'];
-            $courses = $row['courses'];
+            $courses = $row['course'];
 
-            $gender = $_POST['gender'];
-            $city = $_POST['city'];
-            $region = $_POST['region'];
-            $postalCode = $_POST['postal-code'];
-            $department = $_POST['department'];
-            $yearLevel = $_POST['yearLevel'];
+            $gender = $row['gender'];
+            $city = $row['city'];
+            $region = $row['region'];
+            $postalCode = $row['postal_code'];
+            $department = $row['department'];
+            $yearLevel = $row['year_level'];
         }
 
         if (isset($_GET['id'])) {
