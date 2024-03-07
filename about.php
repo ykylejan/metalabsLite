@@ -23,15 +23,15 @@
         }
 
         .animated-p {
-            animation: popupAnimation 2s ease forwards;
+            animation: popupAnimation 3s ease forwards;
         }
 
         .animated-h1 {
-            animation: popupAnimation 2s ease forwards;
+            animation: popupAnimation 3s ease forwards;
         }
 
         .animated-img {
-            animation: popupAnimation 2s ease forwards;
+            animation: popupAnimation 3s ease forwards;
         }
     </style>
 </head>
