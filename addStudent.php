@@ -5,87 +5,87 @@ include("metalabsdb.php");
 ?>
 
 <script>
-    var studentCourses = {
-        "College of Engineering Education": {
-            "Bachelor of Science in Chemical Engineering": [],
-            "Bachelor of Science in Mechanical Engineering": [],
-            "Bachelor of Science in Electrical Engineering": [],
-            "Bachelor of Science in Computer Engineering": [],
-            "Bachelor of Science in Civil Engineering": [],
-        },
-        "College of Computing Education": {
-            "Bachelor of Science in Computer Science": [],
-            "Bachelor of Science in Information Systems": [],
-            "Bachelor of Science in Information Technology": [],
-            "Bachelor of Science in Entertainment and Multimedia Computing": [],
-            "Bachelor of Science in Multimedia Arts": [],
-        },
-        "College of Arts and Science Education": {
-            "Bachelor of Science in Environmental Science": [],
-            "Bachelor of Science in Mathematics": [],
-            "Bachelor of Science in Psychology": [],
-            "Bachelor of Science in Social Work": [],
-            "Bachelor of Science in Forestry": [],
-        },
-        "College of Accounting Education": {
-            "Bachelor of Science in Accountancy": [],
-            "Bachelor of Science in Accounting Technology": [],
-            "Bachelor of Science in Accounting Information System": [],
-            "Bachelor of Science in Internal Auditing": [],
-            "Bachelor of Science in Management Accounting": [],
+var studentCourses = {
+    "College of Engineering Education": {
+        "Bachelor of Science in Chemical Engineering": [],
+        "Bachelor of Science in Mechanical Engineering": [],
+        "Bachelor of Science in Electrical Engineering": [],
+        "Bachelor of Science in Computer Engineering": [],
+        "Bachelor of Science in Civil Engineering": [],
+    },
+    "College of Computing Education": {
+        "Bachelor of Science in Computer Science": [],
+        "Bachelor of Science in Information Systems": [],
+        "Bachelor of Science in Information Technology": [],
+        "Bachelor of Science in Entertainment and Multimedia Computing": [],
+        "Bachelor of Science in Multimedia Arts": [],
+    },
+    "College of Arts and Science Education": {
+        "Bachelor of Science in Environmental Science": [],
+        "Bachelor of Science in Mathematics": [],
+        "Bachelor of Science in Psychology": [],
+        "Bachelor of Science in Social Work": [],
+        "Bachelor of Science in Forestry": [],
+    },
+    "College of Accounting Education": {
+        "Bachelor of Science in Accountancy": [],
+        "Bachelor of Science in Accounting Technology": [],
+        "Bachelor of Science in Accounting Information System": [],
+        "Bachelor of Science in Internal Auditing": [],
+        "Bachelor of Science in Management Accounting": [],
+    }
+}
+window.onload = function() {
+    var departSel = document.getElementById("department");
+    var coursesSel = document.getElementById("courses");
+    for (var x in studentCourses) {
+        departSel.options[departSel.options.length] = new Option(x, x);
+    }
+    departSel.onchange = function() {
+        //empty Chapters- and Topics- dropdowns
+        coursesSel.length = 1;
+        //display correct values
+        for (var y in studentCourses[this.value]) {
+            coursesSel.options[coursesSel.options.length] = new Option(y, y);
         }
     }
-    window.onload = function () {
-        var departSel = document.getElementById("department");
-        var coursesSel = document.getElementById("courses");
-        for (var x in studentCourses) {
-            departSel.options[departSel.options.length] = new Option(x, x);
-        }
-        departSel.onchange = function () {
-            //empty Chapters- and Topics- dropdowns
-            coursesSel.length = 1;
-            //display correct values
-            for (var y in studentCourses[this.value]) {
-                coursesSel.options[coursesSel.options.length] = new Option(y, y);
-            }
-        }
-    }
+}
 </script>
 
 <!-- form validation -->
 <script>
-    function validateForm() {
-        var fname = document.getElementById("first-name").value;
-        var lname = document.getElementById("last-name").value;
-        var contactNum = document.getElementById("contact-num").value;
-        var birthDate = document.getElementById("birthDate").value;
-        var streetAddress = document.getElementById("street-address").value;
-        var courses = document.getElementById("courses").value;
-        var gender = document.getElementById("gender").value;
-        var city = document.getElementById("city").value;
-        var region = document.getElementById("region").value;
-        var postalCode = document.getElementById("postal-code").value;
-        var department = document.getElementById("department").value;
-        var yearLevel = document.getElementById("yearLevel").value;
+function validateForm() {
+    var fname = document.getElementById("first-name").value;
+    var lname = document.getElementById("last-name").value;
+    var contactNum = document.getElementById("contact-num").value;
+    var birthDate = document.getElementById("birthDate").value;
+    var streetAddress = document.getElementById("street-address").value;
+    var courses = document.getElementById("courses").value;
+    var gender = document.getElementById("gender").value;
+    var city = document.getElementById("city").value;
+    var region = document.getElementById("region").value;
+    var postalCode = document.getElementById("postal-code").value;
+    var department = document.getElementById("department").value;
+    var yearLevel = document.getElementById("yearLevel").value;
 
-        if (fname === "" || lname === "" || contactNum === "" || birthDate === "" || streetAddress === "" || courses ===
-            "" || gender === "" || city === "" || region === "" || postalCode === "" || department === "" || yearLevel ===
-            "") {
-            alert("Please fill out all the necessary details.");
-            return false;
-        }
-
-        var currentDate = new Date();
-        var enteredBirthDate = new Date(birthDate);
-
-        if (enteredBirthDate >= currentDate) {
-            alert("Invalid birthdate. Please enter a valid birthdate.");
-            return false;
-        }
-
-        return true;
-
+    if (fname === "" || lname === "" || contactNum === "" || birthDate === "" || streetAddress === "" || courses ===
+        "" || gender === "" || city === "" || region === "" || postalCode === "" || department === "" || yearLevel ===
+        "") {
+        alert("Please fill out all the necessary details.");
+        return false;
     }
+
+    var currentDate = new Date();
+    var enteredBirthDate = new Date(birthDate);
+
+    if (enteredBirthDate >= currentDate) {
+        alert("Invalid birthdate. Please enter a valid birthdate.");
+        return false;
+    }
+
+    return true;
+
+}
 </script>
 
 <!-- end of form validation -->

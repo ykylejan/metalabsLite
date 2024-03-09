@@ -6,7 +6,7 @@
             <div class="flex justify-center items-center gap-x-2">
 
                 <img class="h-10 w-auto" src="partials/metalabsLogo.png" alt="" />
-                <a href="home.php" class="text-white text-3xl ">
+                <a href="index.php" class="text-white text-3xl ">
 
                     meta<span class="font-bold">LABS LITE</span>
                 </a>
